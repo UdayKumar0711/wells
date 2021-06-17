@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_89b561f7a2014ed6883498ed7f792d79 {
+                    position: relative;
+                    width: 800.0px;
+                    height: 400.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+    
+            <style>
+                #scroll_zoom_toggler_de93096b0eb04ac4826d1bbf8db4bf52 {
+                    position:absolute;
+                    width:35px;
+                    bottom:10px;
+                    height:35px;
+                    left:10px;
+                    background-color:#fff;
+                    text-align:center;
+                    line-height:35px;
+                    vertical-align: middle;
+                    }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.2/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.2/Control.FullScreen.min.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.css"/>
+    
+            <style>
+                #export {
+                    position: absolute;
+                    top: 5px;
+                    right: 10px;
+                    z-index: 999;
+                    background: white;
+                    color: black;
+                    padding: 6px;
+                    border-radius: 4px;
+                    font-family: 'Helvetica Neue';
+                    cursor: pointer;
+                    font-size: 12px;
+                    text-decoration: none;
+                    top: 90px;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_89b561f7a2014ed6883498ed7f792d79" ></div>
+        
+    
+            <img id="scroll_zoom_toggler_de93096b0eb04ac4826d1bbf8db4bf52"
+                 alt="scroll"
+                 src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/png/512/arrow-move.png"
+                 style="z-index: 999999"
+                 onclick="map_89b561f7a2014ed6883498ed7f792d79.toggleScroll()">
+            </img>
+        
+    <a href='#' id='export'>Export</a>
+</body>
+<script>    
+    
+            var map_89b561f7a2014ed6883498ed7f792d79 = L.map(
+                "map_89b561f7a2014ed6883498ed7f792d79",
+                {
+                    center: [19.7011, 76.8967],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 8,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_89b561f7a2014ed6883498ed7f792d79);
+
+            
+
+        
+    
+            var tile_layer_f8ded4f037344812a2fb80fc6c9a0b39 = L.tileLayer(
+                "https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg",
+                {"attribution": "Map tiles by \u003ca href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by/3.0\"\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by-sa/3.0\"\u003eCC BY SA\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var tile_layer_2525897618c34df5a0bc8ee44e7262a7 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var tile_layer_7c6d282e3721424ca2eebc42585922b2 = L.tileLayer(
+                "https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg",
+                {"attribution": "Map tiles by \u003ca href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by/3.0\"\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by-sa/3.0\"\u003eCC BY SA\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var tile_layer_b6965867c29d4c53a51e80b7ce0d00d1 = L.tileLayer(
+                "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png",
+                {"attribution": "Map tiles by \u003ca href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by/3.0\"\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var tile_layer_21d2cfb8cb104e55aa3669cb4887a834 = L.tileLayer(
+                "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg",
+                {"attribution": "Map tiles by \u003ca href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by/3.0\"\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by-sa/3.0\"\u003eCC BY SA\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var tile_layer_1c142fb02c41420c8e66f948ea1236a4 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var tile_layer_b76e68cc2a6d412f89cb46e08c2f556e = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+
+        function geo_json_f83f7ae9cb7649f8a57f324ea64465ec_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_f83f7ae9cb7649f8a57f324ea64465ec = L.geoJson(null, {
+                onEachFeature: geo_json_f83f7ae9cb7649f8a57f324ea64465ec_onEachFeature,
+            
+        });
+
+        function geo_json_f83f7ae9cb7649f8a57f324ea64465ec_add (data) {
+            geo_json_f83f7ae9cb7649f8a57f324ea64465ec
+                .addData(data)
+                .addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        }
+            geo_json_f83f7ae9cb7649f8a57f324ea64465ec_add({"crs": {"properties": {"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}, "type": "name"}, "features": [{"geometry": {"coordinates": [[[[76.98034, 19.7074, 0.0], [76.97988, 19.70608, 0.0], [76.97936, 19.70466, 0.0], [76.97882, 19.70314, 0.0], [76.97858, 19.70247, 0.0], [76.97823, 19.70148, 0.0], [76.97797, 19.70079, 0.0], [76.97804, 19.70074, 0.0], [76.9784, 19.69993, 0.0], [76.97903, 19.69855, 0.0], [76.97919, 19.69817, 0.0], [76.97919, 19.69806, 0.0], [76.97922, 19.69727, 0.0], [76.97925, 19.69698, 0.0], [76.97925, 19.69646, 0.0], [76.97896, 19.69613, 0.0], [76.97802, 19.69513, 0.0], [76.97789, 19.6953, 0.0], [76.97757, 19.6957, 0.0], [76.97743, 19.69585, 0.0], [76.97721, 19.69613, 0.0], [76.97713, 19.69624, 0.0], [76.97704, 19.69634, 0.0], [76.9768, 19.69665, 0.0], [76.97648, 19.69703, 0.0], [76.97642, 19.6971, 0.0], [76.97595, 19.69765, 0.0], [76.9759, 19.69769, 0.0], [76.97533, 19.69733, 0.0], [76.97486, 19.69698, 0.0], [76.97437, 19.69662, 0.0], [76.973, 19.69556, 0.0], [76.97168, 19.69457, 0.0], [76.9709, 19.69382, 0.0], [76.97013, 19.69346, 0.0], [76.97015, 19.6932, 0.0], [76.97037, 19.69184, 0.0], [76.97042, 19.69145, 0.0], [76.97055, 19.69066, 0.0], [76.97074, 19.68937, 0.0], [76.97095, 19.688, 0.0], [76.97102, 19.68753, 0.0], [76.9699, 19.68739, 0.0], [76.96839, 19.68778, 0.0], [76.96766, 19.68797, 0.0], [76.967, 19.68812, 0.0], [76.96653, 19.68825, 0.0], [76.96507, 19.68864, 0.0], [76.96493, 19.68867, 0.0], [76.96494, 19.68868, 0.0], [76.9643, 19.68901, 0.0], [76.96359, 19.68815, 0.0], [76.96335, 19.68787, 0.0], [76.96333, 19.68781, 0.0], [76.96282, 19.68749, 0.0], [76.96186, 19.68691, 0.0], [76.96179, 19.68691, 0.0], [76.96142, 19.68659, 0.0], [76.96139, 19.68654, 0.0], [76.96121, 19.68639, 0.0], [76.96086, 19.68607, 0.0], [76.96026, 19.68557, 0.0], [76.96004, 19.68539, 0.0], [76.96003, 19.68538, 0.0], [76.9599, 19.68528, 0.0], [76.95965, 19.68508, 0.0], [76.95955, 19.68511, 0.0], [76.95883, 19.68539, 0.0], [76.95875, 19.68541, 0.0], [76.95764, 19.68571, 0.0], [76.95756, 19.68573, 0.0], [76.95728, 19.68582, 0.0], [76.95724, 19.68578, 0.0], [76.95624, 19.68577, 0.0], [76.95573, 19.68576, 0.0], [76.95556, 19.68576, 0.0], [76.95557, 19.68603, 0.0], [76.95554, 19.68649, 0.0], [76.95552, 19.68688, 0.0], [76.95547, 19.68788, 0.0], [76.95408, 19.68848, 0.0], [76.95366, 19.68864, 0.0], [76.95365, 19.68864, 0.0], [76.95344, 19.68796, 0.0], [76.95302, 19.68651, 0.0], [76.95264, 19.68527, 0.0], [76.95252, 19.68486, 0.0], [76.95244, 19.68461, 0.0], [76.95161, 19.68558, 0.0], [76.95155, 19.68566, 0.0], [76.95083, 19.68614, 0.0], [76.95079, 19.68616, 0.0], [76.95038, 19.68469, 0.0], [76.95025, 19.68421, 0.0], [76.95021, 19.6841, 0.0], [76.95018, 19.68403, 0.0], [76.95002, 19.68384, 0.0], [76.95, 19.6835, 0.0], [76.94991, 19.68206, 0.0], [76.94987, 19.68153, 0.0], [76.94985, 19.68107, 0.0], [76.9495, 19.68089, 0.0], [76.94924, 19.68073, 0.0], [76.94902, 19.68061, 0.0], [76.94867, 19.6804, 0.0], [76.94847, 19.68031, 0.0], [76.94755, 19.67978, 0.0], [76.94685, 19.67939, 0.0], [76.94646, 19.67917, 0.0], [76.94559, 19.67868, 0.0], [76.94548, 19.67861, 0.0], [76.94414, 19.67785, 0.0], [76.94387, 19.67772, 0.0], [76.94271, 19.67702, 0.0], [76.94214, 19.67669, 0.0], [76.9419, 19.67654, 0.0], [76.94138, 19.67624, 0.0], [76.94048, 19.67571, 0.0], [76.93996, 19.67541, 0.0], [76.93929, 19.67501, 0.0], [76.93888, 19.67478, 0.0], [76.93885, 19.67476, 0.0], [76.93873, 19.67466, 0.0], [76.93871, 19.6747, 0.0], [76.93867, 19.67544, 0.0], [76.93859, 19.67687, 0.0], [76.93854, 19.67689, 0.0], [76.93833, 19.67714, 0.0], [76.93792, 19.67765, 0.0], [76.93738, 19.67833, 0.0], [76.93731, 19.67841, 0.0], [76.93709, 19.67869, 0.0], [76.93669, 19.6792, 0.0], [76.93635, 19.67961, 0.0], [76.93628, 19.67977, 0.0], [76.93584, 19.68078, 0.0], [76.93579, 19.6809, 0.0], [76.93551, 19.68209, 0.0], [76.93551, 19.68262, 0.0], [76.93546, 19.68288, 0.0], [76.93548, 19.68302, 0.0], [76.93503, 19.68339, 0.0], [76.93473, 19.68365, 0.0], [76.93315, 19.68489, 0.0], [76.93309, 19.68497, 0.0], [76.93235, 19.68556, 0.0], [76.93083, 19.68546, 0.0], [76.92976, 19.68536, 0.0], [76.92913, 19.68516, 0.0], [76.92845, 19.68511, 0.0], [76.92807, 19.68526, 0.0], [76.92813, 19.68589, 0.0], [76.92805, 19.68634, 0.0], [76.92805, 19.68681, 0.0], [76.928, 19.68687, 0.0], [76.92846, 19.68758, 0.0], [76.92871, 19.68807, 0.0], [76.92913, 19.68899, 0.0], [76.92949, 19.68967, 0.0], [76.92963, 19.6899, 0.0], [76.92972, 19.69098, 0.0], [76.92974, 19.69118, 0.0], [76.92986, 19.69256, 0.0], [76.92987, 19.69302, 0.0], [76.92988, 19.69359, 0.0], [76.92988, 19.69401, 0.0], [76.92992, 19.6942, 0.0], [76.93025, 19.69639, 0.0], [76.93031, 19.69781, 0.0], [76.9305, 19.69891, 0.0], [76.93071, 19.69957, 0.0], [76.9309, 19.70019, 0.0], [76.93097, 19.70032, 0.0], [76.931, 19.7004, 0.0], [76.93109, 19.70062, 0.0], [76.9311, 19.70065, 0.0], [76.93105, 19.70151, 0.0], [76.93097, 19.70239, 0.0], [76.93092, 19.70315, 0.0], [76.9309, 19.70331, 0.0], [76.9309, 19.70333, 0.0], [76.93087, 19.70345, 0.0], [76.93009, 19.70471, 0.0], [76.92978, 19.70521, 0.0], [76.9291, 19.70634, 0.0], [76.92908, 19.70641, 0.0], [76.92909, 19.70649, 0.0], [76.92909, 19.70651, 0.0], [76.92962, 19.70795, 0.0], [76.9299, 19.7087, 0.0], [76.92993, 19.70873, 0.0], [76.93108, 19.70969, 0.0], [76.93111, 19.70972, 0.0], [76.93118, 19.70979, 0.0], [76.93188, 19.71036, 0.0], [76.93196, 19.71043, 0.0], [76.93219, 19.7106, 0.0], [76.93287, 19.71114, 0.0], [76.93345, 19.71158, 0.0], [76.93369, 19.71176, 0.0], [76.9337, 19.71176, 0.0], [76.93433, 19.71225, 0.0], [76.93488, 19.71269, 0.0], [76.93572, 19.71336, 0.0], [76.93608, 19.71364, 0.0], [76.93611, 19.71367, 0.0], [76.93612, 19.71369, 0.0], [76.93627, 19.71385, 0.0], [76.9363, 19.7139, 0.0], [76.93648, 19.71395, 0.0], [76.93752, 19.71433, 0.0], [76.93758, 19.71434, 0.0], [76.93774, 19.7144, 0.0], [76.93897, 19.71492, 0.0], [76.94017, 19.71545, 0.0], [76.94107, 19.71583, 0.0], [76.94207, 19.71632, 0.0], [76.94341, 19.71697, 0.0], [76.94347, 19.71704, 0.0], [76.94402, 19.71701, 0.0], [76.94608, 19.71693, 0.0], [76.94616, 19.71694, 0.0], [76.94657, 19.71704, 0.0], [76.94744, 19.71725, 0.0], [76.94818, 19.71745, 0.0], [76.94873, 19.71758, 0.0], [76.94988, 19.71786, 0.0], [76.94998, 19.71787, 0.0], [76.95014, 19.71789, 0.0], [76.95035, 19.71792, 0.0], [76.95048, 19.71794, 0.0], [76.9507, 19.71794, 0.0], [76.95075, 19.71793, 0.0], [76.95107, 19.71791, 0.0], [76.95113, 19.7179, 0.0], [76.95148, 19.71775, 0.0], [76.95152, 19.71771, 0.0], [76.95203, 19.71711, 0.0], [76.95216, 19.71695, 0.0], [76.95251, 19.71651, 0.0], [76.95255, 19.71648, 0.0], [76.95258, 19.71646, 0.0], [76.95315, 19.71593, 0.0], [76.95328, 19.71583, 0.0], [76.95408, 19.71526, 0.0], [76.95522, 19.71442, 0.0], [76.95553, 19.7142, 0.0], [76.95571, 19.71408, 0.0], [76.95572, 19.71408, 0.0], [76.95631, 19.71309, 0.0], [76.95635, 19.71301, 0.0], [76.95641, 19.71293, 0.0], [76.95697, 19.71225, 0.0], [76.95705, 19.71217, 0.0], [76.95706, 19.71216, 0.0], [76.95752, 19.71157, 0.0], [76.95771, 19.71131, 0.0], [76.95825, 19.71062, 0.0], [76.95834, 19.71053, 0.0], [76.95844, 19.71043, 0.0], [76.95908, 19.70973, 0.0], [76.95938, 19.70943, 0.0], [76.95939, 19.70943, 0.0], [76.9599, 19.70903, 0.0], [76.96085, 19.70828, 0.0], [76.96139, 19.70786, 0.0], [76.96144, 19.70783, 0.0], [76.96171, 19.70759, 0.0], [76.96243, 19.70741, 0.0], [76.96301, 19.70726, 0.0], [76.96365, 19.70712, 0.0], [76.96378, 19.70708, 0.0], [76.96384, 19.70709, 0.0], [76.96387, 19.7071, 0.0], [76.96433, 19.707, 0.0], [76.96632, 19.70668, 0.0], [76.96683, 19.70658, 0.0], [76.96934, 19.70604, 0.0], [76.97008, 19.70587, 0.0], [76.97064, 19.70575, 0.0], [76.97222, 19.70654, 0.0], [76.97318, 19.70702, 0.0], [76.97323, 19.70697, 0.0], [76.9735, 19.70698, 0.0], [76.97356, 19.707, 0.0], [76.97373, 19.707, 0.0], [76.97487, 19.70707, 0.0], [76.97633, 19.70716, 0.0], [76.97646, 19.70717, 0.0], [76.97898, 19.70732, 0.0], [76.98035, 19.70741, 0.0], [76.98034, 19.7074, 0.0]]]], "type": "MultiPolygon"}, "properties": {"AltMode": 0, "Base": 0.0, "BeginTime": null, "Clamped": -1, "EndTime": null, "Extruded": 0, "FolderPath": "Jambhrun Andh.kml/Grid", "Name": "Jamrun andh", "OID_": 0, "PopupInfo": null, "Shape_Area": 0.00127513345, "Shape_Leng": 0.17643618151, "Snippet": null, "SymbolID": 0, "TimeSpan": 0, "TimeStamp": 0}, "type": "Feature"}], "name": "well_boundary", "type": "FeatureCollection"});
+
+        
+    
+            var layer_control_16929559ae944d44a7f65a24a351f8c8 = {
+                base_layers : {
+                    "stamenterrain" : tile_layer_7c6d282e3721424ca2eebc42585922b2,
+                    "openstreetmap" : tile_layer_2525897618c34df5a0bc8ee44e7262a7,
+                    "stamentoner" : tile_layer_b6965867c29d4c53a51e80b7ce0d00d1,
+                    "stamenwatercolor" : tile_layer_21d2cfb8cb104e55aa3669cb4887a834,
+                    "cartodbpositron" : tile_layer_1c142fb02c41420c8e66f948ea1236a4,
+                    "cartodbdark_matter" : tile_layer_b76e68cc2a6d412f89cb46e08c2f556e,
+                },
+                overlays :  {
+                    "Well_boundary " : geo_json_f83f7ae9cb7649f8a57f324ea64465ec,
+                },
+            };
+            L.control.layers(
+                layer_control_16929559ae944d44a7f65a24a351f8c8.base_layers,
+                layer_control_16929559ae944d44a7f65a24a351f8c8.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+            tile_layer_2525897618c34df5a0bc8ee44e7262a7.remove();
+            tile_layer_7c6d282e3721424ca2eebc42585922b2.remove();
+            tile_layer_b6965867c29d4c53a51e80b7ce0d00d1.remove();
+            tile_layer_21d2cfb8cb104e55aa3669cb4887a834.remove();
+            tile_layer_1c142fb02c41420c8e66f948ea1236a4.remove();
+            tile_layer_b76e68cc2a6d412f89cb46e08c2f556e.remove();
+        
+    
+            var tile_layer_aa2f000e16dd4c4a888f3dbccd2bd3c4 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_0a61a42331c843f7831fd31130c7cff2 = new L.Control.MiniMap(
+                tile_layer_aa2f000e16dd4c4a888f3dbccd2bd3c4,
+                {"autoToggleDisplay": false, "centerFixed": false, "collapsedHeight": 25, "collapsedWidth": 25, "height": 150, "minimized": false, "position": "bottomright", "toggleDisplay": true, "width": 150, "zoomAnimation": false, "zoomLevelOffset": -5}
+            );
+            map_89b561f7a2014ed6883498ed7f792d79.addControl(mini_map_0a61a42331c843f7831fd31130c7cff2);
+        
+    
+            map_89b561f7a2014ed6883498ed7f792d79.scrollEnabled = true;
+
+            map_89b561f7a2014ed6883498ed7f792d79.toggleScroll = function() {
+                if (this.scrollEnabled) {
+                    this.scrollEnabled = false;
+                    this.scrollWheelZoom.disable();
+                } else {
+                    this.scrollEnabled = true;
+                    this.scrollWheelZoom.enable();
+                }
+            };
+            map_89b561f7a2014ed6883498ed7f792d79.toggleScroll();
+        
+    
+            L.control.fullscreen(
+                {"forceSeparateButton": false, "position": "topright", "title": "Full Screen", "titleCancel": "Exit Full Screen"}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var marker_7e4ee13c652a43e8989525edd342e747 = L.marker(
+                [19.7025, 76.97388889],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_670ac440b2e74051a3bcf2d0590b69b6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_7e4ee13c652a43e8989525edd342e747.setIcon(icon_670ac440b2e74051a3bcf2d0590b69b6);
+        
+    
+        var popup_e094722cd194437990de01807993a3db = L.popup({"maxWidth": "100%"});
+
+        
+            var html_e759efc452c64af4892a6e6142fb5dd7 = $(`<div id="html_e759efc452c64af4892a6e6142fb5dd7" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW01 <br> <b>WellDepth: </b> 6.4<br> <b>WellTopLevel : </b> 507<br> <img src=JADW01_PLOT.png height=300 width=600><br> <img src=JADW35.jpg height=300 width=600></div>`)[0];
+            popup_e094722cd194437990de01807993a3db.setContent(html_e759efc452c64af4892a6e6142fb5dd7);
+        
+
+        marker_7e4ee13c652a43e8989525edd342e747.bindPopup(popup_e094722cd194437990de01807993a3db)
+        ;
+
+        
+    
+    
+            marker_7e4ee13c652a43e8989525edd342e747.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6a1aca0056f240e38838709b54e0d7fc = L.marker(
+                [19.70805556, 76.95111111],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_411e3ca74ac74d9b909a76eaa1ae5086 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_6a1aca0056f240e38838709b54e0d7fc.setIcon(icon_411e3ca74ac74d9b909a76eaa1ae5086);
+        
+    
+        var popup_a0ba6dfbc3c64727abeb8c770debe61d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a7ec6bd85613487e826a017c481e679e = $(`<div id="html_a7ec6bd85613487e826a017c481e679e" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW04 <br> <b>WellDepth: </b> 9.1<br> <b>WellTopLevel : </b> 495<br> <img src=JADW04_PLOT.png height=300 width=600><br> <img src=JADW04.jpg height=300 width=600></div>`)[0];
+            popup_a0ba6dfbc3c64727abeb8c770debe61d.setContent(html_a7ec6bd85613487e826a017c481e679e);
+        
+
+        marker_6a1aca0056f240e38838709b54e0d7fc.bindPopup(popup_a0ba6dfbc3c64727abeb8c770debe61d)
+        ;
+
+        
+    
+    
+            marker_6a1aca0056f240e38838709b54e0d7fc.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_033c5a494b7a48669144a776ac1c70a0 = L.marker(
+                [19.7075, 76.95055556],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_5853791f5eb343f4aea25dd4fa4c8bd1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_033c5a494b7a48669144a776ac1c70a0.setIcon(icon_5853791f5eb343f4aea25dd4fa4c8bd1);
+        
+    
+        var popup_52ceab39c3b3418a8560d426a0100e95 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5343f1d229354cf9832f755e13803304 = $(`<div id="html_5343f1d229354cf9832f755e13803304" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW05 <br> <b>WellDepth: </b> 4.0<br> <b>WellTopLevel : </b> 492<br> <img src=JADW05_PLOT.png height=300 width=600><br> <img src=JADW05.jpg height=300 width=600></div>`)[0];
+            popup_52ceab39c3b3418a8560d426a0100e95.setContent(html_5343f1d229354cf9832f755e13803304);
+        
+
+        marker_033c5a494b7a48669144a776ac1c70a0.bindPopup(popup_52ceab39c3b3418a8560d426a0100e95)
+        ;
+
+        
+    
+    
+            marker_033c5a494b7a48669144a776ac1c70a0.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a531cf794325476fa28a56227c38716f = L.marker(
+                [19.70194444, 76.95944444],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_304fe9b886f04424a17d27214edea79b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_a531cf794325476fa28a56227c38716f.setIcon(icon_304fe9b886f04424a17d27214edea79b);
+        
+    
+        var popup_95928e5c45fd47599a6f909588314eec = L.popup({"maxWidth": "100%"});
+
+        
+            var html_134062e8351e4a4c87193bd04eeb08b3 = $(`<div id="html_134062e8351e4a4c87193bd04eeb08b3" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW08 <br> <b>WellDepth: </b> 7.9<br> <b>WellTopLevel : </b> 491<br> <img src=JADW08_PLOT.png height=300 width=600><br> <img src=JADW08.jpg height=300 width=600></div>`)[0];
+            popup_95928e5c45fd47599a6f909588314eec.setContent(html_134062e8351e4a4c87193bd04eeb08b3);
+        
+
+        marker_a531cf794325476fa28a56227c38716f.bindPopup(popup_95928e5c45fd47599a6f909588314eec)
+        ;
+
+        
+    
+    
+            marker_a531cf794325476fa28a56227c38716f.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a7a80314817046d4913fb42894ab82e7 = L.marker(
+                [19.69916667, 76.9575],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_9d1154b938fc4044a02b784cb7d0a6e4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_a7a80314817046d4913fb42894ab82e7.setIcon(icon_9d1154b938fc4044a02b784cb7d0a6e4);
+        
+    
+        var popup_9f3c6235c6b441ba9a90530a6a29b1fa = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c70a92ac634d4ab1836c0aeab45dfb70 = $(`<div id="html_c70a92ac634d4ab1836c0aeab45dfb70" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW12 <br> <b>WellDepth: </b> 5.0<br> <b>WellTopLevel : </b> 487<br> <img src=JADW12_PLOT.png height=300 width=600><br> <img src=JADW12.jpg height=300 width=600></div>`)[0];
+            popup_9f3c6235c6b441ba9a90530a6a29b1fa.setContent(html_c70a92ac634d4ab1836c0aeab45dfb70);
+        
+
+        marker_a7a80314817046d4913fb42894ab82e7.bindPopup(popup_9f3c6235c6b441ba9a90530a6a29b1fa)
+        ;
+
+        
+    
+    
+            marker_a7a80314817046d4913fb42894ab82e7.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c9a1de14a7cb45aaa6b2ec77ddf71272 = L.marker(
+                [19.69416667, 76.95833333],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_f9256fc17dc44f3e84f3af0dd08e83f7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_c9a1de14a7cb45aaa6b2ec77ddf71272.setIcon(icon_f9256fc17dc44f3e84f3af0dd08e83f7);
+        
+    
+        var popup_ffdc58189f2f4597893d61970c82b747 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2e3a3752261c47a4984ec4f7d0bee86c = $(`<div id="html_2e3a3752261c47a4984ec4f7d0bee86c" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW13 <br> <b>WellDepth: </b> 6.9<br> <b>WellTopLevel : </b> 482<br> <img src=JADW13_PLOT.png height=300 width=600><br> <img src=JADW13.jpg height=300 width=600></div>`)[0];
+            popup_ffdc58189f2f4597893d61970c82b747.setContent(html_2e3a3752261c47a4984ec4f7d0bee86c);
+        
+
+        marker_c9a1de14a7cb45aaa6b2ec77ddf71272.bindPopup(popup_ffdc58189f2f4597893d61970c82b747)
+        ;
+
+        
+    
+    
+            marker_c9a1de14a7cb45aaa6b2ec77ddf71272.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ad4f8e74135e4951bd50a1cb1f8ad996 = L.marker(
+                [19.6975, 76.95416667],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_a018e29fc8a247f39c9ee85b39f9aad5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_ad4f8e74135e4951bd50a1cb1f8ad996.setIcon(icon_a018e29fc8a247f39c9ee85b39f9aad5);
+        
+    
+        var popup_385bc4c68562403d811e1b46f481d10d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d4d3aae1432a476c88fdcb42764d109f = $(`<div id="html_d4d3aae1432a476c88fdcb42764d109f" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW16 <br> <b>WellDepth: </b> 8.73<br> <b>WellTopLevel : </b> 475<br> <img src=JADW16_PLOT.png height=300 width=600><br> <img src=JADW16.jpg height=300 width=600></div>`)[0];
+            popup_385bc4c68562403d811e1b46f481d10d.setContent(html_d4d3aae1432a476c88fdcb42764d109f);
+        
+
+        marker_ad4f8e74135e4951bd50a1cb1f8ad996.bindPopup(popup_385bc4c68562403d811e1b46f481d10d)
+        ;
+
+        
+    
+    
+            marker_ad4f8e74135e4951bd50a1cb1f8ad996.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_834141386b1f4f1b9911449fff4b51bf = L.marker(
+                [19.70083333, 76.95611111],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_0778cc7e72114961b36b44f153879b66 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_834141386b1f4f1b9911449fff4b51bf.setIcon(icon_0778cc7e72114961b36b44f153879b66);
+        
+    
+        var popup_d456440f3a014b70b5e419ab53a2ddc3 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c883193861384a53a72393728e1152c4 = $(`<div id="html_c883193861384a53a72393728e1152c4" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW17 <br> <b>WellDepth: </b> 5.3<br> <b>WellTopLevel : </b> 481<br> <img src=JADW17_PLOT.png height=300 width=600><br> <img src=JADW17.jpg height=300 width=600></div>`)[0];
+            popup_d456440f3a014b70b5e419ab53a2ddc3.setContent(html_c883193861384a53a72393728e1152c4);
+        
+
+        marker_834141386b1f4f1b9911449fff4b51bf.bindPopup(popup_d456440f3a014b70b5e419ab53a2ddc3)
+        ;
+
+        
+    
+    
+            marker_834141386b1f4f1b9911449fff4b51bf.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cafef441f26b4dfcb1606bf0156429dd = L.marker(
+                [19.71138889, 76.95444444],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_7d2309dcc7e54fc399581767fd51f5d0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_cafef441f26b4dfcb1606bf0156429dd.setIcon(icon_7d2309dcc7e54fc399581767fd51f5d0);
+        
+    
+        var popup_402285d69b354180b6510048d3471072 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_21b3e1238fe0452dbd29223cdc9c10af = $(`<div id="html_21b3e1238fe0452dbd29223cdc9c10af" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW22 <br> <b>WellDepth: </b> 5.6<br> <b>WellTopLevel : </b> 523<br> <img src=JADW22_PLOT.png height=300 width=600><br> <img src=JADW22.jpg height=300 width=600></div>`)[0];
+            popup_402285d69b354180b6510048d3471072.setContent(html_21b3e1238fe0452dbd29223cdc9c10af);
+        
+
+        marker_cafef441f26b4dfcb1606bf0156429dd.bindPopup(popup_402285d69b354180b6510048d3471072)
+        ;
+
+        
+    
+    
+            marker_cafef441f26b4dfcb1606bf0156429dd.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8fa09823fbde463aaac78edaf6895720 = L.marker(
+                [19.70472222, 76.94972222],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_b397d57db2ea4252b8b6a7b5c6894a96 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_8fa09823fbde463aaac78edaf6895720.setIcon(icon_b397d57db2ea4252b8b6a7b5c6894a96);
+        
+    
+        var popup_7d6fcaf668184af29311ff9d80020402 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_383bd562989546d6bb9ec2db8baec888 = $(`<div id="html_383bd562989546d6bb9ec2db8baec888" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW30 <br> <b>WellDepth: </b> 14.87<br> <b>WellTopLevel : </b> 487<br> <img src=JADW30_PLOT.png height=300 width=600><br> <img src=JADW30.jpg height=300 width=600></div>`)[0];
+            popup_7d6fcaf668184af29311ff9d80020402.setContent(html_383bd562989546d6bb9ec2db8baec888);
+        
+
+        marker_8fa09823fbde463aaac78edaf6895720.bindPopup(popup_7d6fcaf668184af29311ff9d80020402)
+        ;
+
+        
+    
+    
+            marker_8fa09823fbde463aaac78edaf6895720.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b1530195b2574cba9b36dda113682717 = L.marker(
+                [19.70194444, 76.95305556],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_eef89bbb7e584e3191cdb1c0141ee9d5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_b1530195b2574cba9b36dda113682717.setIcon(icon_eef89bbb7e584e3191cdb1c0141ee9d5);
+        
+    
+        var popup_2eeb2e3f4a274be9a839a2327f727553 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_330665f28dc44164a36da16e8e892be7 = $(`<div id="html_330665f28dc44164a36da16e8e892be7" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW34 <br> <b>WellDepth: </b> 4.8<br> <b>WellTopLevel : </b> 481<br> <img src=JADW34_PLOT.png height=300 width=600><br> <img src=JADW34.jpg height=300 width=600></div>`)[0];
+            popup_2eeb2e3f4a274be9a839a2327f727553.setContent(html_330665f28dc44164a36da16e8e892be7);
+        
+
+        marker_b1530195b2574cba9b36dda113682717.bindPopup(popup_2eeb2e3f4a274be9a839a2327f727553)
+        ;
+
+        
+    
+    
+            marker_b1530195b2574cba9b36dda113682717.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b0cfa9abee3644028cfb6473d2e449d8 = L.marker(
+                [19.70194444, 76.95194444],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_6e49662eaabe4d4a800e98ddc43d1f8e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_b0cfa9abee3644028cfb6473d2e449d8.setIcon(icon_6e49662eaabe4d4a800e98ddc43d1f8e);
+        
+    
+        var popup_855b65c16e2d4816a618f7b9ea46acf7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_466b8fe393294a34bac7b68a88a2993a = $(`<div id="html_466b8fe393294a34bac7b68a88a2993a" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW36 <br> <b>WellDepth: </b> 6.2<br> <b>WellTopLevel : </b> 485<br> <img src=JADW36_PLOT.png height=300 width=600><br> <img src=JADW36.jpg height=300 width=600></div>`)[0];
+            popup_855b65c16e2d4816a618f7b9ea46acf7.setContent(html_466b8fe393294a34bac7b68a88a2993a);
+        
+
+        marker_b0cfa9abee3644028cfb6473d2e449d8.bindPopup(popup_855b65c16e2d4816a618f7b9ea46acf7)
+        ;
+
+        
+    
+    
+            marker_b0cfa9abee3644028cfb6473d2e449d8.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1b26a40a89204e07b2f2b095f32d8656 = L.marker(
+                [19.69138889, 76.95722222],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_2b1e0d6c1d7943b99fa2d0a9ba952bd3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_1b26a40a89204e07b2f2b095f32d8656.setIcon(icon_2b1e0d6c1d7943b99fa2d0a9ba952bd3);
+        
+    
+        var popup_1a579e05a70a4e12aa7b4e44e5da9e56 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7d730598141e4ac3bff21207c824e69d = $(`<div id="html_7d730598141e4ac3bff21207c824e69d" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW38 <br> <b>WellDepth: </b> 7.05<br> <b>WellTopLevel : </b> 468<br> <img src=JADW38_PLOT.png height=300 width=600><br> <img src=JADW38.jpg height=300 width=600></div>`)[0];
+            popup_1a579e05a70a4e12aa7b4e44e5da9e56.setContent(html_7d730598141e4ac3bff21207c824e69d);
+        
+
+        marker_1b26a40a89204e07b2f2b095f32d8656.bindPopup(popup_1a579e05a70a4e12aa7b4e44e5da9e56)
+        ;
+
+        
+    
+    
+            marker_1b26a40a89204e07b2f2b095f32d8656.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_19fd9036da5c4af1ad4097631586e6c1 = L.marker(
+                [19.68916667, 76.95083333],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_6be592349ed042259e39096d8bdbf9c9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_19fd9036da5c4af1ad4097631586e6c1.setIcon(icon_6be592349ed042259e39096d8bdbf9c9);
+        
+    
+        var popup_a9a588178d7447e49ee2f367bd1b44db = L.popup({"maxWidth": "100%"});
+
+        
+            var html_bd34cede72214be5b8076d58dc97bbaa = $(`<div id="html_bd34cede72214be5b8076d58dc97bbaa" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW44 <br> <b>WellDepth: </b> 4.9<br> <b>WellTopLevel : </b> 469<br> <img src=JADW44_PLOT.png height=300 width=600><br> <img src=JADW44.jpg height=300 width=600></div>`)[0];
+            popup_a9a588178d7447e49ee2f367bd1b44db.setContent(html_bd34cede72214be5b8076d58dc97bbaa);
+        
+
+        marker_19fd9036da5c4af1ad4097631586e6c1.bindPopup(popup_a9a588178d7447e49ee2f367bd1b44db)
+        ;
+
+        
+    
+    
+            marker_19fd9036da5c4af1ad4097631586e6c1.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_664c7eb1eb814b83a79fa0ecc45fc902 = L.marker(
+                [19.68888889, 76.94805556],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_20db8db6f97045bc93d226c361f49090 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_664c7eb1eb814b83a79fa0ecc45fc902.setIcon(icon_20db8db6f97045bc93d226c361f49090);
+        
+    
+        var popup_ad9ba79fe6c04c98b6e75db897f6504e = L.popup({"maxWidth": "100%"});
+
+        
+            var html_73dc4598583d406e81d550c1265fee1a = $(`<div id="html_73dc4598583d406e81d550c1265fee1a" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW47 <br> <b>WellDepth: </b> 5.0<br> <b>WellTopLevel : </b> 472<br> <img src=JADW47_PLOT.png height=300 width=600><br> <img src=JADW47.jpg height=300 width=600></div>`)[0];
+            popup_ad9ba79fe6c04c98b6e75db897f6504e.setContent(html_73dc4598583d406e81d550c1265fee1a);
+        
+
+        marker_664c7eb1eb814b83a79fa0ecc45fc902.bindPopup(popup_ad9ba79fe6c04c98b6e75db897f6504e)
+        ;
+
+        
+    
+    
+            marker_664c7eb1eb814b83a79fa0ecc45fc902.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_820ee3fbecfc4e35a8c59db953d35688 = L.marker(
+                [19.70472222, 76.94805556],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_3c91ec0f2237434ab55c2e67265698a6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_820ee3fbecfc4e35a8c59db953d35688.setIcon(icon_3c91ec0f2237434ab55c2e67265698a6);
+        
+    
+        var popup_65871f74a20e44139ebbed1dae2e7b9f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ff1436d77126491f9e6cc57779f17d86 = $(`<div id="html_ff1436d77126491f9e6cc57779f17d86" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW52 <br> <b>WellDepth: </b> 8.3<br> <b>WellTopLevel : </b> 491<br> <img src=JADW52_PLOT.png height=300 width=600><br> <img src=JADW52.jpg height=300 width=600></div>`)[0];
+            popup_65871f74a20e44139ebbed1dae2e7b9f.setContent(html_ff1436d77126491f9e6cc57779f17d86);
+        
+
+        marker_820ee3fbecfc4e35a8c59db953d35688.bindPopup(popup_65871f74a20e44139ebbed1dae2e7b9f)
+        ;
+
+        
+    
+    
+            marker_820ee3fbecfc4e35a8c59db953d35688.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9a7c3de26e174cc486c1a1e8d04ffdd4 = L.marker(
+                [19.70583333, 76.94416667],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_a2cf5a3effd1462dbc5391e0d65defc0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_9a7c3de26e174cc486c1a1e8d04ffdd4.setIcon(icon_a2cf5a3effd1462dbc5391e0d65defc0);
+        
+    
+        var popup_5dde58e8044d48f9931f514c1d4c4e43 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_6e37794264d74df5928b448ffc6b74a7 = $(`<div id="html_6e37794264d74df5928b448ffc6b74a7" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW55 <br> <b>WellDepth: </b> 7.5<br> <b>WellTopLevel : </b> 497<br> <img src=JADW55_PLOT.png height=300 width=600><br> <img src=JADW55.jpg height=300 width=600></div>`)[0];
+            popup_5dde58e8044d48f9931f514c1d4c4e43.setContent(html_6e37794264d74df5928b448ffc6b74a7);
+        
+
+        marker_9a7c3de26e174cc486c1a1e8d04ffdd4.bindPopup(popup_5dde58e8044d48f9931f514c1d4c4e43)
+        ;
+
+        
+    
+    
+            marker_9a7c3de26e174cc486c1a1e8d04ffdd4.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_de0b975f91c946e2ae91fd6016e9b18e = L.marker(
+                [19.69, 76.94444444],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_3edbd9188f5e4ee7a84505f93b463636 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_de0b975f91c946e2ae91fd6016e9b18e.setIcon(icon_3edbd9188f5e4ee7a84505f93b463636);
+        
+    
+        var popup_faa2357b7dce4543b567d3b23f09a6e6 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_18af4f325a014e6ba22cedc5b138f3a4 = $(`<div id="html_18af4f325a014e6ba22cedc5b138f3a4" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW59 <br> <b>WellDepth: </b> 11.0<br> <b>WellTopLevel : </b> 477<br> <img src=JADW59_PLOT.png height=300 width=600><br> <img src=JADW59.jpg height=300 width=600></div>`)[0];
+            popup_faa2357b7dce4543b567d3b23f09a6e6.setContent(html_18af4f325a014e6ba22cedc5b138f3a4);
+        
+
+        marker_de0b975f91c946e2ae91fd6016e9b18e.bindPopup(popup_faa2357b7dce4543b567d3b23f09a6e6)
+        ;
+
+        
+    
+    
+            marker_de0b975f91c946e2ae91fd6016e9b18e.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8b5bc812984347099ea239368e18c971 = L.marker(
+                [19.69222222, 76.94],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_75855323847e4c59a215e77e713cd8ab = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_8b5bc812984347099ea239368e18c971.setIcon(icon_75855323847e4c59a215e77e713cd8ab);
+        
+    
+        var popup_26fad25858b64877953c6beafa2a6896 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c5194a0fb6924b7599b7d1663a0998bd = $(`<div id="html_c5194a0fb6924b7599b7d1663a0998bd" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW62 <br> <b>WellDepth: </b> 8.3<br> <b>WellTopLevel : </b> 486<br> <img src=JADW62_PLOT.png height=300 width=600><br> <img src=JADW62.jpg height=300 width=600></div>`)[0];
+            popup_26fad25858b64877953c6beafa2a6896.setContent(html_c5194a0fb6924b7599b7d1663a0998bd);
+        
+
+        marker_8b5bc812984347099ea239368e18c971.bindPopup(popup_26fad25858b64877953c6beafa2a6896)
+        ;
+
+        
+    
+    
+            marker_8b5bc812984347099ea239368e18c971.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c4824e5a47ce41919c8441227bea24af = L.marker(
+                [19.69333333, 76.93972222],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_5f544cb6809147f09de548f0609d2471 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_c4824e5a47ce41919c8441227bea24af.setIcon(icon_5f544cb6809147f09de548f0609d2471);
+        
+    
+        var popup_6d978f5ec56d45548f933103a2b96ceb = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a21e686bed1c4c328a5f7ee8e6c3cf22 = $(`<div id="html_a21e686bed1c4c328a5f7ee8e6c3cf22" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW64 <br> <b>WellDepth: </b> 8.1<br> <b>WellTopLevel : </b> 490<br> <img src=JADW64_PLOT.png height=300 width=600><br> <img src=JADW64.jpg height=300 width=600></div>`)[0];
+            popup_6d978f5ec56d45548f933103a2b96ceb.setContent(html_a21e686bed1c4c328a5f7ee8e6c3cf22);
+        
+
+        marker_c4824e5a47ce41919c8441227bea24af.bindPopup(popup_6d978f5ec56d45548f933103a2b96ceb)
+        ;
+
+        
+    
+    
+            marker_c4824e5a47ce41919c8441227bea24af.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6ace78701b5c485cb22eb1418af4795b = L.marker(
+                [19.70861111, 76.93611111],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_06598217e2fe4663b99463147e72a3d8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_6ace78701b5c485cb22eb1418af4795b.setIcon(icon_06598217e2fe4663b99463147e72a3d8);
+        
+    
+        var popup_8d4cd5db3f02483aa69931e26ea7f082 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_151fcea05482447396751073353ae155 = $(`<div id="html_151fcea05482447396751073353ae155" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW66 <br> <b>WellDepth: </b> 7.9<br> <b>WellTopLevel : </b> 523<br> <img src=JADW66_PLOT.png height=300 width=600><br> <img src=JADW66.jpg height=300 width=600></div>`)[0];
+            popup_8d4cd5db3f02483aa69931e26ea7f082.setContent(html_151fcea05482447396751073353ae155);
+        
+
+        marker_6ace78701b5c485cb22eb1418af4795b.bindPopup(popup_8d4cd5db3f02483aa69931e26ea7f082)
+        ;
+
+        
+    
+    
+            marker_6ace78701b5c485cb22eb1418af4795b.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c7a17e0283f041b7af717519d2651571 = L.marker(
+                [19.68694444, 76.93722222],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_1c1d2ea887ee43bfa563f80dae83d3cf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_c7a17e0283f041b7af717519d2651571.setIcon(icon_1c1d2ea887ee43bfa563f80dae83d3cf);
+        
+    
+        var popup_0510b6ac655d4923b138ca59424817bd = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d92bb7bb1f0f4599852fcedff0b25606 = $(`<div id="html_d92bb7bb1f0f4599852fcedff0b25606" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW70 <br> <b>WellDepth: </b> 3.0<br> <b>WellTopLevel : </b> 497<br> <img src=JADW70_PLOT.png height=300 width=600><br> <img src=JADW70.jpg height=300 width=600></div>`)[0];
+            popup_0510b6ac655d4923b138ca59424817bd.setContent(html_d92bb7bb1f0f4599852fcedff0b25606);
+        
+
+        marker_c7a17e0283f041b7af717519d2651571.bindPopup(popup_0510b6ac655d4923b138ca59424817bd)
+        ;
+
+        
+    
+    
+            marker_c7a17e0283f041b7af717519d2651571.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d9b0ab8393904ca5a63a1d3d0159305c = L.marker(
+                [19.70722222, 76.93388889],
+                {}
+            ).addTo(map_89b561f7a2014ed6883498ed7f792d79);
+        
+    
+            var icon_fe4a988235614816a6e52d3f1660f337 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_d9b0ab8393904ca5a63a1d3d0159305c.setIcon(icon_fe4a988235614816a6e52d3f1660f337);
+        
+    
+        var popup_2ea5b37dc41446348e2b63a4a0ea7d33 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_61463523862f41bdb6ca01d4ffac5806 = $(`<div id="html_61463523862f41bdb6ca01d4ffac5806" style="width: 100.0%; height: 100.0%;"><b>Wellname  : </b>JADW73 <br> <b>WellDepth: </b> 11.4<br> <b>WellTopLevel : </b> 527<br> <img src=JADW73_PLOT.png height=300 width=600><br> <img src=JADW73.jpg height=300 width=600></div>`)[0];
+            popup_2ea5b37dc41446348e2b63a4a0ea7d33.setContent(html_61463523862f41bdb6ca01d4ffac5806);
+        
+
+        marker_d9b0ab8393904ca5a63a1d3d0159305c.bindPopup(popup_2ea5b37dc41446348e2b63a4a0ea7d33)
+        ;
+
+        
+    
+    
+            marker_d9b0ab8393904ca5a63a1d3d0159305c.bindTooltip(
+                `<div>
+                     click for more info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var measure_control_922a8e9bd02642d7abae114d371f4882 = new L.Control.Measure(
+                {"activeColor": "red", "completedColor": "red", "position": "topleft", "primaryAreaUnit": "sqmeters", "primaryLengthUnit": "kilometers", "secondaryAreaUnit": "acres", "secondaryLengthUnit": "miles"});
+            map_89b561f7a2014ed6883498ed7f792d79.addControl(measure_control_922a8e9bd02642d7abae114d371f4882);
+
+        
+    
+            var options = {
+              position: "topleft",
+              draw: {},
+              edit: {},
+            }
+            // FeatureGroup is to store editable layers.
+            var drawnItems = new L.featureGroup().addTo(
+                map_89b561f7a2014ed6883498ed7f792d79
+            );
+            options.edit.featureGroup = drawnItems;
+            var draw_control_2bc2f877fb264578aa0949818f3f55af = new L.Control.Draw(
+                options
+            ).addTo( map_89b561f7a2014ed6883498ed7f792d79 );
+            map_89b561f7a2014ed6883498ed7f792d79.on(L.Draw.Event.CREATED, function(e) {
+                var layer = e.layer,
+                    type = e.layerType;
+                var coords = JSON.stringify(layer.toGeoJSON());
+                layer.on('click', function() {
+                    alert(coords);
+                    console.log(coords);
+                });
+                drawnItems.addLayer(layer);
+             });
+            map_89b561f7a2014ed6883498ed7f792d79.on('draw:created', function(e) {
+                drawnItems.addLayer(e.layer);
+            });
+            
+            document.getElementById('export').onclick = function(e) {
+                var data = drawnItems.toGeoJSON();
+                var convertedData = 'text/json;charset=utf-8,'
+                    + encodeURIComponent(JSON.stringify(data));
+                document.getElementById('export').setAttribute(
+                    'href', 'data:' + convertedData
+                );
+                document.getElementById('export').setAttribute(
+                    'download', "data.geojson"
+                );
+            }
+            
+        
+    
+                var lat_lng_popup_67eadc8d9eba43d199018203970da74c = L.popup();
+                function latLngPop(e) {
+                    lat_lng_popup_67eadc8d9eba43d199018203970da74c
+                        .setLatLng(e.latlng)
+                        .setContent("Latitude: " + e.latlng.lat.toFixed(4) +
+                                    "<br>Longitude: " + e.latlng.lng.toFixed(4))
+                        .openOn(map_89b561f7a2014ed6883498ed7f792d79);
+                    }
+                map_89b561f7a2014ed6883498ed7f792d79.on('click', latLngPop);
+            
+</script>
